@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netbox-av-plugin"
+version = "0.1.0"
+description = "AV metadata and cable validation for NetBox endpoints"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  {name = "thewilloftheshadow"},
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: Django",
+  "Intended Audience :: System Administrators",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Source = "https://github.com/fbcgulfport/netbox-av-plugin"
+
+[tool.setuptools.package-data]
+netbox_av_plugin = ["templates/**/*.html"]

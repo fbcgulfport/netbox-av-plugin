@@ -1,0 +1,35 @@
+{% extends 'generic/object.html' %}
+{% load helpers %}
+
+{% block content %}
+  <div class="row">
+    <div class="col col-md-6">
+      <div class="card">
+        <h2 class="card-header">AV Port Assignment</h2>
+        <table class="table table-hover attr-table">
+          <tr>
+            <th scope="row">Profile</th>
+            <td>{{ object.profile|linkify }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Endpoint</th>
+            <td>{{ object.endpoint|linkify }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Endpoint Type</th>
+            <td>{{ object.endpoint_type }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Device</th>
+            <td>{{ object.device|linkify|placeholder }}</td>
+          </tr>
+        </table>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+    <div class="col col-md-6">
+      {% include 'inc/panels/tags.html' %}
+      {% include 'inc/panels/comments.html' %}
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,62 @@
+{% extends 'generic/object.html' %}
+{% load helpers %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+  <div class="row">
+    <div class="col col-md-6">
+      <div class="card">
+        <h2 class="card-header">AV Port Profile</h2>
+        <table class="table table-hover attr-table">
+          <tr>
+            <th scope="row">Name</th>
+            <td>{{ object.name }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Signal</th>
+            <td>{% badge object.get_signal_display bg_color=object.get_signal_color %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Rate</th>
+            <td>{{ object.get_rate_display|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Connector</th>
+            <td>{% badge object.get_connector_display bg_color=object.get_connector_color %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Direction</th>
+            <td>{% badge object.get_direction_display bg_color=object.get_direction_color %}</td>
+          </tr>
+          <tr>
+            <th scope="row">Gender</th>
+            <td>{{ object.get_gender_display|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Channels</th>
+            <td>{{ object.channel_count|placeholder }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Description</th>
+            <td>{{ object.description|placeholder }}</td>
+          </tr>
+        </table>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+    <div class="col col-md-6">
+      {% include 'inc/panels/tags.html' %}
+      {% include 'inc/panels/comments.html' %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-md-12">
+      <div class="card">
+        <h5 class="card-header">Assignments</h5>
+        <div class="table-responsive">
+          {% render_table assignments_table %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
